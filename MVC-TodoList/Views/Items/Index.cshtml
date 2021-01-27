@@ -1,5 +1,28 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿<br />
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Item List</h2>
+    </div>
+    <div class="col-3 offset-3">
+        <a asp-action="Create" asp-controller="Items" class="btn btn-info form-control text-white">
+            Add New Item
+        </a>
+    </div>
+    <div class="col-12 border p-3">
+        <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Due Date</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/itemList.js"></script>
 }

@@ -12,7 +12,7 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "title", "width": "15%" },
+            { "data": "title", "width": "38%" },
             { "data": "duedate", "width": "15%" },
             { "data": "priority", "width": "15%" },
             { "data": "status", "width": "15%" },
