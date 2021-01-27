@@ -12,6 +12,8 @@ namespace MVC_TodoList.Controllers
     {
         private readonly ApplicationDbContext _db;
 
+        [BindProperty]
+        public Item Item { get; set; }
         public ItemsController(ApplicationDbContext db)
         {
             _db = db;
@@ -20,6 +22,23 @@ namespace MVC_TodoList.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Create(int? id)
+        {
+            Item = new Item();
+            if (id == null)
+            {
+                //create
+                return View(Item);
+            }
+            // else update
+            Item = _db.Items.FirstOrDefault(Item => Item.Id == id);
+            if (Item == null)
+            {
+                return NotFound();
+            }
+            return View(Item);
         }
 
         #region API Calls
