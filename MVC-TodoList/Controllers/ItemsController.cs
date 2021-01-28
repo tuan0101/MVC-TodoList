@@ -41,6 +41,27 @@ namespace MVC_TodoList.Controllers
             return View(Item);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create()
+        {
+            if (ModelState.IsValid)
+            {
+                if (Item.Id == 0)
+                {
+                    //create
+                    _db.Items.Add(Item);
+                }
+                else
+                {
+                    _db.Items.Update(Item);
+                }
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(Item);
+        }
+
         #region API Calls
         [HttpGet]
         public async Task<IActionResult> GetAll()

@@ -14,8 +14,8 @@ function loadDataTable() {
         "columns": [
             { "data": "title", "width": "38%" },
             { "data": "duedate", "width": "15%" },
-            { "data": "priority", "width": "15%" },
-            { "data": "status", "width": "15%" },
+            { "data": "priority", "width": "12%" },
+            { "data": "status", "width": "12%" },
             {
                 "data": "id",
                 "render": function (data) {
