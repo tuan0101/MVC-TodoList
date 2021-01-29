@@ -12,24 +12,31 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "title", "width": "38%" },
-            { "data": "duedate", "width": "15%" },
+            { "data": "title", "width": "38%" },       
+            {
+                "data": "dueDate",                 //first character needs to be lowercase
+                "render": function (data) {
+                    return `<div class="text-center">
+                            ${data.substring(0, 10)}
+                        </div>`;
+                }, "width": "13%"
+            } ,
             { "data": "priority", "width": "12%" },
             { "data": "status", "width": "12%" },
             {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                        <a href="/Items/Index?id=${data}" class='btn btn-success text-white' style='cursor:pointer; width:70px;'>
+                        <a href="/Items/Create?id=${data}" class='btn btn-success text-white mt-1' style='cursor:pointer; width:70px;'>
                             Edit
                         </a>
                         &nbsp;
-                        <a class='btn btn-danger text-white' style='cursor:pointer; width:70px;'
+                        <a class='btn btn-danger text-white mt-1' style='cursor:pointer; width:70px;'
                             onclick=Delete('/items/Delete?id='+${data})>
                             Delete
                         </a>
                         </div>`;
-                }, "width": "40%"
+                }, "width": "25%"
             }
         ],
         "language": {
