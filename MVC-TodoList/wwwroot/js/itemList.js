@@ -12,8 +12,6 @@ function getButtonStyle() {
     });
 }
 
-$('#DT_load my-button>button').css("color", "red");
-
 
 function loadDataTable() {
     dataTable = $('#DT_load').DataTable({
@@ -36,8 +34,8 @@ function loadDataTable() {
             {
                 "data": "status",                 
                 "render": function (data) {
-                    return `<div class="text-center my-button">
-                            <button >${data}</button>
+                    return `<div class="text-center my-button mt-1">
+                            <button class="btn btn-sm ${data? "btn-success" : "btn-secondary"}">${data? "Done" : "Pending"}</button>
                         </div>`;
                 }, "width": "12%"
             },         
@@ -45,7 +43,7 @@ function loadDataTable() {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                        <a href="/Items/Create?id=${data}" class='btn btn-success text-white mt-1' style='cursor:pointer; width:70px;'>
+                        <a href="/Items/Create?id=${data}" class='btn btn-info text-white mt-1' style='cursor:pointer; width:70px;'>
                             Edit
                         </a>
                         &nbsp;
