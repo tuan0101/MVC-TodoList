@@ -1,8 +1,19 @@
 ﻿var dataTable;
+//var button-style;
 
 $(document).ready(function () {
     loadDataTable();
+    getButtonStyle();
 });
+
+function getButtonStyle() {
+    $('#DT_load .my-button>button').click(function () {
+        $(this).hide();
+    });
+}
+
+$('#DT_load my-button>button').css("color", "red");
+
 
 function loadDataTable() {
     dataTable = $('#DT_load').DataTable({
@@ -20,9 +31,16 @@ function loadDataTable() {
                             ${data.substring(0, 10)}
                         </div>`;
                 }, "width": "13%"
-            } ,
+            },
             { "data": "priority", "width": "12%" },
-            { "data": "status", "width": "12%" },
+            {
+                "data": "status",                 
+                "render": function (data) {
+                    return `<div class="text-center my-button">
+                            <button >${data}</button>
+                        </div>`;
+                }, "width": "12%"
+            },         
             {
                 "data": "id",
                 "render": function (data) {
